@@ -2,7 +2,18 @@
 
 A small SIP "ping" tool. It sends SIP `OPTIONS` requests over UDP to a server and reports DNS resolution time, round-trip time, packet loss, jitter and percentiles (with enough responses). Replies are validated against the request with proper exit code.
 
-Single file, standard library only.
+## Features
+
+- **SIP OPTIONS Ping** — Send OPTIONS requests to SIP endpoints.
+- **Response validation** :  Match replies using Call-ID, CSeq, and Via branch.
+- **RTT statistics** :  Minimum, average, maximum, and standard deviation.
+- **Packet loss** :  Detect unanswered SIP requests.
+- **Jitter** :  Measure variation between consecutive SIP response times.
+- **Percentiles** :  Calculate p50, p95, and p99 RTT.
+- **DNS timing** :  Measure hostname resolution time.
+- **Verbose mode** :  Display SIP requests and responses.
+- **Monitoring support** :  Process exit codes for scripts and automation.
+- **No dependencies** :  Uses only Python's standard library.
 
 ## Requirements
 
@@ -12,8 +23,8 @@ Single file, standard library only.
 ## Quick start
 
 ```bash
-git clone https://github.com/she-alt/sip-scripts.git
-cd sip-scripts
+git clone https://github.com/she-alt/sip-options.git
+cd sip-options
 python3 sip-options.py sip.example.com
 ```
 
@@ -102,7 +113,7 @@ All requests in one run share a Call-ID, and CSeq increments from 1.
 Example monitoring check:
 
 ```bash
-python3 sip-options.py sbc.example.com -c 3 -t 2 -i 0.5 > /dev/null || echo "SIP OPTIONS check failed"
+python3 sip-options.py sip.example.com -c 3 -t 2 -i 0.5 > /dev/null || echo "SIP OPTIONS check failed"
 ```
 
 Ctrl-C stops the run and prints the summary of what was sent so far.
@@ -111,10 +122,26 @@ Ctrl-C stops the run and prints the summary of what was sent so far.
 
 - UDP and IPv4 only.
 - No retransmissions.
+- No SIP authentication or configurable SIP headers.
+- No SIP DNS SRV/NAPTR resolution.
 - The local address used in the `Via` and `Contact` headers is found by checking which interface would route to `8.8.4.4`. No traffic is sent there. The tool relies on `rport` for NAT, so replies are expected back to the source address and port of the request.
 
-## To do
+## To Do
 
 - Customizable OPTIONS template, selectable from the command line
-- TCP support
-- More testing
+- Expected SIP response-code validation
+- TCP/TLS and IPv6 support
+- JSON/CSV output
+- Custom SIP headers and Request-URI
+- More tests (manual + automated tests and GitHub actions)
+- More validation
+
+## License
+
+Licensed under the [GNU General Public License v3.0](LICENSE).
+
+## Contributing
+
+Issues, suggestions, and pull requests are welcome.
+
+[Report an Issue](https://github.com/she-alt/sip-options/issues) · [GitHub Repository](https://github.com/she-alt/sip-options)
