@@ -4,16 +4,16 @@ A small SIP "ping" tool. It sends SIP `OPTIONS` requests over UDP to a server an
 
 ## Features
 
-- **SIP OPTIONS Ping** — Send OPTIONS requests to SIP endpoints.
-- **Response validation** :  Match replies using Call-ID, CSeq, and Via branch.
-- **RTT statistics** :  Minimum, average, maximum, and standard deviation.
-- **Packet loss** :  Detect unanswered SIP requests.
-- **Jitter** :  Measure variation between consecutive SIP response times.
-- **Percentiles** :  Calculate p50, p95, and p99 RTT.
-- **DNS timing** :  Measure hostname resolution time.
-- **Verbose mode** :  Display SIP requests and responses.
-- **Monitoring support** :  Process exit codes for scripts and automation.
-- **No dependencies** :  Uses only Python's standard library.
+- **SIP OPTIONS Ping**: Send OPTIONS requests to SIP endpoints.
+- **Response validation**: Match replies using Call-ID, CSeq, and Via branch.
+- **RTT statistics**: Minimum, average, maximum, and standard deviation.
+- **Packet loss**: Detect unanswered SIP requests.
+- **Jitter**: Measure variation between consecutive SIP response times.
+- **Percentiles**: Calculate p50, p95, and p99 RTT.
+- **DNS timing**:  Measure hostname resolution time.
+- **Verbose mode**: Display SIP requests and responses.
+- **Monitoring support**: Process exit codes for scripts and automation.
+- **No dependencies**:  Uses only Python's standard library.
 
 ## Requirements
 
